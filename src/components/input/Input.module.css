@@ -1,0 +1,42 @@
+.form {
+  max-width: 55.5rem;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.form input {
+  width: 100%;
+  /* height: 5.8rem; */
+  padding: 1.9rem 2.4rem;
+  font-size: 1.8rem;
+  color: var(--very-dark-grey);
+  font-weight: 400;
+  /* padding-left: 2.4rem; */
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  margin: 0 2.4rem;
+  box-shadow: 0px 50px 50px -25px rgba(0, 0, 0, 0.1);
+}
+
+.form input::placeholder {
+  font-size: 1.8rem;
+  color: var(--very-dark-grey);
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2.2rem 2.4rem;
+  border: none;
+  background-color: var(--black);
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.button:hover {
+  background-color: var(--very-dark-grey);
+}

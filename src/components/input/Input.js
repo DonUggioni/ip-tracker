@@ -1,28 +1,25 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import classes from './Input.module.css';
 import arrowIcon from '../../assets/icon-arrow.svg';
 
 function Input(props) {
-  const [ipAddress, setIpAddress] = useState('');
-
-  function inputHandler(event) {
-    event.preventDefault();
-    setIpAddress(event.target.value);
-  }
+  const ipInputRef = useRef();
 
   function clickHandler(event) {
-    console.log(ipAddress);
     event.preventDefault();
+    const enteredIp = ipInputRef.current.value;
+    props.onEnteredIp(enteredIp);
+    ipInputRef.current.value = '';
   }
 
   return (
-    <form
-      className={classes.form}
-      onChange={inputHandler}
-      onClick={clickHandler}
-    >
-      <input type={props.type} placeholder={props.placeholder} />
+    <form className={classes.form} onClick={clickHandler}>
+      <input
+        type={props.type}
+        placeholder={props.placeholder}
+        ref={ipInputRef}
+      />
       <button className={classes.button}>
         <img src={arrowIcon} alt="Arrow icon" />
       </button>

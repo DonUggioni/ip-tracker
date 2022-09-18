@@ -1,6 +1,8 @@
 import classes from './ResultsDisplay.module.css';
 
 function ResultsDisplay(props) {
+  const locationDetails = `Brooklyn, NY 10001`;
+
   return (
     <div className={classes.container}>
       <div className={classes.info}>
@@ -9,7 +11,7 @@ function ResultsDisplay(props) {
       </div>
       <div className={classes.info}>
         <span>Location</span>
-        <h2>Brooklyn, NY 10001</h2>
+        <h2>{locationDetails}</h2>
       </div>
       <div className={classes.info}>
         <span>Timezone</span>

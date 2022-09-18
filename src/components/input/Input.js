@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import classes from './Input.module.css';
 import arrowIcon from '../../assets/icon-arrow.svg';

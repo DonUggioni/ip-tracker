@@ -1,4 +1,4 @@
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 import classes from './Map.module.css';
 import mapIcon from '../../assets/icon-location.svg';
 
@@ -20,7 +20,7 @@ function Map(props) {
         googleMapsApiKey="AIzaSyBXWDdRP_3OR0oFccUwY2XvL1VuDeXZHfk"
       >
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
-          <Marker position={center} />
+          <MarkerF icon={mapIcon} position={center} />
         </GoogleMap>
       </LoadScript>
     </div>

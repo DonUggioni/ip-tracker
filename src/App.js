@@ -7,8 +7,11 @@ import Map from './components/map/Map';
 
 function App() {
   const [data, setData] = useState({});
+  const [ipAddress, setIpAddress] = useState('209.87.141.228');
 
   function enteredIpHandler(ipAddress) {
+    setIpAddress(ipAddress);
+
     const isNum = /^[0-9.,]+$/.test(ipAddress);
     if (ipAddress.length === 0 || !isNum) {
       return;
@@ -20,6 +23,7 @@ function App() {
           console.log(data);
           const dataArr = [data];
           dataArr.map((item) => {
+            console.log(item.latitude);
             return setData({
               ip: item.ip,
               city: item.city,
@@ -28,8 +32,8 @@ function App() {
               zipcode: item.postal,
               timezone: item.utc_offset,
               isp: item.org,
-              lat: parseFloat(item.latitude),
-              lng: parseFloat(item.longitude),
+              lat: item.latitude,
+              lng: item.longitude,
             });
           });
         });
@@ -39,6 +43,10 @@ function App() {
       });
   }
 
+  useEffect(() => {
+    enteredIpHandler(ipAddress);
+  }, [ipAddress]);
+
   return (
     <Fragment>
       <Header>
@@ -47,16 +55,15 @@ function App() {
           placeholder="Search for any IP address or domain"
           onEnteredIp={enteredIpHandler}
         ></Input>
-        {data && (
-          <ResultsDisplay
-            ip={data.ip}
-            city={data.city}
-            state={data.state}
-            postal={data.zipcode}
-            timezone={data.timezone}
-            isp={data.isp}
-          />
-        )}
+
+        <ResultsDisplay
+          ip={data.ip}
+          city={data.city}
+          state={data.state}
+          postal={data.zipcode}
+          timezone={data.timezone}
+          isp={data.isp}
+        />
       </Header>
       <Map lat={data.lat} lng={data.lng} />
     </Fragment>

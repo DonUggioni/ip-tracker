@@ -7,6 +7,8 @@
   background-color: var(--white);
   border-radius: 15px;
   box-shadow: 0px 50px 50px -25px rgba(0, 0, 0, 0.0983665);
+  position: relative;
+  z-index: 1;
 }
 
 .info {

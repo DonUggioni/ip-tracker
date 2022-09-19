@@ -9,11 +9,13 @@ function ResultsDisplay(props) {
       </div>
       <div className={classes.info}>
         <span>Location</span>
-        <h2>Some location</h2>
+        <h2>
+          {props.city}, {props.country} {props.state} {props.postal}
+        </h2>
       </div>
       <div className={classes.info}>
         <span>Timezone</span>
-        <h2>{props.timezone}</h2>
+        <h2>UTC {props.timezone}</h2>
       </div>
       <div className={classes.info}>
         <span>Isp</span>

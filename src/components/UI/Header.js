@@ -1,4 +1,3 @@
-import Input from '../input/Input';
 import classes from './Header.module.css';
 
 function Header(props) {

@@ -7,12 +7,10 @@
 
 .form input {
   width: 100%;
-  /* height: 5.8rem; */
   padding: 1.9rem 2.4rem;
   font-size: 1.8rem;
   color: var(--very-dark-grey);
   font-weight: 400;
-  /* padding-left: 2.4rem; */
   border-radius: 15px;
   border: none;
   outline: none;
@@ -35,8 +33,19 @@
   border-radius: 0 15px 15px 0;
   cursor: pointer;
   transition: all 0.1s;
+  margin-right: 2.4rem;
 }
 
 .button:hover {
   background-color: var(--very-dark-grey);
+}
+
+@media screen and (max-width: 68.125em) {
+  .form {
+    min-width: 32.7rem;
+  }
+
+  .button {
+    padding: 1.9rem 2.4rem;
+  }
 }

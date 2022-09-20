@@ -19,7 +19,12 @@ function Map(props) {
         className={classes.container}
         googleMapsApiKey="AIzaSyBXWDdRP_3OR0oFccUwY2XvL1VuDeXZHfk"
       >
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={12}
+          options={{ disableDefaultUI: true }}
+        >
           <MarkerF icon={mapIcon} position={center} />
         </GoogleMap>
       </LoadScript>

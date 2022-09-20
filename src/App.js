@@ -20,10 +20,12 @@ function App() {
     fetch(`https://ipapi.co/${ipAddress}/json/`)
       .then(function (response) {
         response.json().then((data) => {
-          console.log(data);
           const dataArr = [data];
           dataArr.map((item) => {
-            console.log(item.latitude);
+            console.log(item);
+            if (item.error === true) {
+              return setData({ ip: item.reason });
+            }
             return setData({
               ip: item.ip,
               city: item.city,
@@ -39,6 +41,7 @@ function App() {
         });
       })
       .catch(function (error) {
+        setData({ ip: error.message });
         console.log(error);
       });
   }
@@ -52,7 +55,7 @@ function App() {
       <Header>
         <Input
           type="text"
-          placeholder="Search for any IP address or domain"
+          placeholder="Search for any IP address"
           onEnteredIp={enteredIpHandler}
         ></Input>
 

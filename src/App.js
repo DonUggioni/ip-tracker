@@ -4,10 +4,13 @@ import Header from './components/UI/Header';
 import ResultsDisplay from './components/resultsDisplay/ResultsDisplay';
 import Input from './components/input/Input';
 import Map from './components/map/Map';
+import Loading from './components/loading/Loading';
+import ErrorMessage from './components/errorMessage/ErrorMessage';
 
 function App() {
   const [data, setData] = useState({});
-  const [ipAddress, setIpAddress] = useState('209.87.141.228');
+  const [ipAddress, setIpAddress] = useState('193.135.236.233');
+  const [isLoading, setIsLoading] = useState(false);
 
   function enteredIpHandler(ipAddress) {
     setIpAddress(ipAddress);
@@ -17,6 +20,7 @@ function App() {
       return;
     }
 
+    setIsLoading(true);
     fetch(`https://ipapi.co/${ipAddress}/json/`)
       .then(function (response) {
         response.json().then((data) => {
@@ -38,6 +42,7 @@ function App() {
               lng: item.longitude,
             });
           });
+          setIsLoading(false);
         });
       })
       .catch(function (error) {
@@ -48,7 +53,9 @@ function App() {
 
   useEffect(() => {
     enteredIpHandler(ipAddress);
-  }, [ipAddress]);
+  }, []);
+
+  const invalidIP = data.ip === 'Reserved IP Address';
 
   return (
     <Fragment>
@@ -58,15 +65,20 @@ function App() {
           placeholder="Search for any IP address"
           onEnteredIp={enteredIpHandler}
         ></Input>
-
-        <ResultsDisplay
-          ip={data.ip}
-          city={data.city}
-          state={data.state}
-          postal={data.zipcode}
-          timezone={data.timezone}
-          isp={data.isp}
-        />
+        {isLoading && <Loading />}
+        {invalidIP && (
+          <ErrorMessage errorMessage={'This is a reserved IP address.'} />
+        )}
+        {!isLoading && !invalidIP && (
+          <ResultsDisplay
+            ip={data.ip}
+            city={data.city}
+            state={data.state}
+            postal={data.zipcode}
+            timezone={data.timezone}
+            isp={data.isp}
+          />
+        )}
       </Header>
       <Map lat={data.lat} lng={data.lng} />
     </Fragment>

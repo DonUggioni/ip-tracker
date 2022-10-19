@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 110rem;
+  width: 100%;
+  padding: 3.6rem 3.2rem;
+  margin: 4.8rem 2.4rem 0;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0px 50px 50px -25px rgba(0, 0, 0, 0.0983665);
+  position: relative;
+  z-index: 2;
+}

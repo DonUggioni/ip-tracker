@@ -3,6 +3,8 @@ import classes from './Map.module.css';
 import mapIcon from '../../assets/icon-location.svg';
 
 function Map(props) {
+  const API_KEY = process.env.REACT_APP_GOOGLE_API;
+
   const containerStyle = {
     width: '100%',
     height: '100%',
@@ -15,10 +17,7 @@ function Map(props) {
 
   return (
     <div className={classes.container}>
-      <LoadScript
-        className={classes.container}
-        googleMapsApiKey="AIzaSyBXWDdRP_3OR0oFccUwY2XvL1VuDeXZHfk"
-      >
+      <LoadScript className={classes.container} googleMapsApiKey={API_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}

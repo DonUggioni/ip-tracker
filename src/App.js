@@ -53,7 +53,7 @@ function App() {
 
   useEffect(() => {
     enteredIpHandler(ipAddress);
-  }, []);
+  }, [ipAddress]);
 
   const invalidIP = data.ip === 'Reserved IP Address';
 
